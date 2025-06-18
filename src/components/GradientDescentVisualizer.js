@@ -2,14 +2,14 @@ import React, { useState, useEffect, useRef } from 'react';
 import './GradientDescentVisualizer.css';
 
 const GradientDescentVisualizer = ({ inputData }) => {
-  // Initial weights - start with smaller random values for better learning
+  // Initial weights - start with better initialization to keep more neurons active
   const getInitialWeights = () => ({
     inputToHidden: [
-      [Math.random() * 0.4 - 0.2, Math.random() * 0.4 - 0.2, Math.random() * 0.4 - 0.2, Math.random() * 0.4 - 0.2],
-      [Math.random() * 0.4 - 0.2, Math.random() * 0.4 - 0.2, Math.random() * 0.4 - 0.2, Math.random() * 0.4 - 0.2],
-      [Math.random() * 0.4 - 0.2, Math.random() * 0.4 - 0.2, Math.random() * 0.4 - 0.2, Math.random() * 0.4 - 0.2]
+      [0.3, -0.1, 0.4, 0.2],   // Ensure mix of positive/negative but biased positive
+      [0.2, 0.5, -0.1, 0.3],   // Keep most neurons alive with positive bias
+      [0.1, 0.3, 0.4, -0.2]    // Some negative but balanced
     ],
-    hiddenToOutput: [[Math.random() * 0.4 - 0.2], [Math.random() * 0.4 - 0.2], [Math.random() * 0.4 - 0.2], [Math.random() * 0.4 - 0.2]]
+    hiddenToOutput: [[0.3], [0.4], [-0.2], [0.5]]  // Mix of positive/negative
   });
 
   const [currentWeights, setCurrentWeights] = useState(getInitialWeights());
