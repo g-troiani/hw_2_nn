@@ -357,4 +357,27 @@ text[fill="#F44336"] {
 
 .step-button:hover:not(:disabled) {
   background: linear-gradient(45deg, #7B1FA2, #6A1B9A);
+}
+
+.gradient-values {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.gradient-values p {
+  margin: 5px 0;
+  font-weight: bold;
+}
+
+.gradient-value {
+  display: inline-block;
+  margin: 2px 5px;
+  padding: 4px 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9em;
+  color: #FFD700;
+  border: 1px solid rgba(255, 215, 0, 0.3);
 } 

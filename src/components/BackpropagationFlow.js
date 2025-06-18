@@ -617,9 +617,22 @@ const BackpropagationFlow = ({ inputData }) => {
           
           {currentStep >= 5 && (
             <div className="detail-card gradient-card">
-              <h5>Weight Gradients</h5>
-              <p>Output Layer: [{flowData.backward.outputGradients.map(g => g.toFixed(3)).join(', ')}]</p>
-              <p>Hidden Layer (sample): [{flowData.backward.hiddenGradients[0].map(g => g.toFixed(3)).join(', ')}]</p>
+              <h5>🔙 Current Gradients</h5>
+              <div className="gradient-values">
+                <p><strong>Output Layer:</strong></p>
+                {flowData.backward.outputGradients.map((grad, i) => (
+                  <span key={i} className="gradient-value">
+                    ∇w{i+1}: {grad.toFixed(4)}
+                  </span>
+                ))}
+                
+                <p><strong>Hidden Layer (first neuron):</strong></p>
+                {flowData.backward.hiddenGradients.map((grad, i) => (
+                  <span key={i} className="gradient-value">
+                    ∇w{i+1}h1: {grad[0].toFixed(4)}
+                  </span>
+                ))}
+              </div>
               <p>Learning Rate: α = {learningRate}</p>
             </div>
           )}
