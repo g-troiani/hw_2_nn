@@ -73,9 +73,9 @@ const NeuralNetworkVisualization = ({ networkState, inputData }) => {
         {inputNodes.map((inputNode, i) => {
           // Calculate real-time normalized input for connection effects
           const normalizedInputs = [
-            inputData.temperatureChange / 4,
-            inputData.precipitationChange / 30,
-            (inputData.co2Level - 400) / 400
+            Math.max(0.1, (inputData.temperatureChange + 2) / 6), // 0.1 to 1.0 range
+            Math.max(0.1, (inputData.precipitationChange + 30) / 60), // 0.1 to 1.0 range  
+            Math.max(0.1, (inputData.co2Level - 350) / 450) // 0.1 to 1.0 range
           ];
           
           return hiddenNodes.map((hiddenNode, j) => {
@@ -152,9 +152,9 @@ const NeuralNetworkVisualization = ({ networkState, inputData }) => {
           
           // Calculate normalized values for consistent coloring
           const normalizedForColor = [
-            inputData.temperatureChange / 4,
-            inputData.precipitationChange / 30,
-            (inputData.co2Level - 400) / 400
+            Math.max(0.1, (inputData.temperatureChange + 2) / 6), // 0.1 to 1.0 range
+            Math.max(0.1, (inputData.precipitationChange + 30) / 60), // 0.1 to 1.0 range  
+            Math.max(0.1, (inputData.co2Level - 350) / 450) // 0.1 to 1.0 range
           ];
           
           return (
@@ -175,6 +175,15 @@ const NeuralNetworkVisualization = ({ networkState, inputData }) => {
                 fill="#333"
                 textAnchor="middle"
                 fontWeight="bold"
+              >
+                {normalizedForColor[i].toFixed(2)}
+              </text>
+              <text
+                x={node.x}
+                y={node.y - nodeRadius - 25}
+                fontSize="10"
+                fill="#666"
+                textAnchor="middle"
               >
                 {actualValues[i].toFixed(i === 2 ? 0 : 1)}{i === 0 ? '°C' : i === 1 ? '%' : ''}
               </text>
