@@ -1,0 +1,124 @@
+.neural-network-container {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.network-info {
+  margin-bottom: 20px;
+  padding: 15px;
+  background: rgba(59, 130, 246, 0.1);
+  border-radius: 10px;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.network-info p {
+  margin: 5px 0;
+  font-size: 0.9rem;
+  color: #374151;
+}
+
+.network-svg {
+  width: 100%;
+  height: auto;
+  border: 2px solid #e5e7eb;
+  border-radius: 15px;
+  background: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Weight labels */
+.weight-label {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.network-svg:hover .weight-label {
+  opacity: 1;
+}
+
+/* Animations */
+.animating-connection {
+  animation: pulseConnection 0.8s ease-in-out;
+}
+
+.animating-node {
+  animation: pulseNode 0.6s ease-in-out;
+}
+
+@keyframes pulseConnection {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 8px currentColor);
+  }
+}
+
+@keyframes pulseNode {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 10px currentColor);
+  }
+}
+
+.animation-indicator {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.pulse-animation {
+  display: inline-block;
+  padding: 10px 20px;
+  background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+  color: white;
+  border-radius: 25px;
+  font-weight: 600;
+  animation: pulse 1.5s ease-in-out infinite;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.9;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .network-svg {
+    height: 300px;
+  }
+  
+  .weight-label {
+    font-size: 8px;
+  }
+  
+  text[font-size="12"] {
+    font-size: 10px;
+  }
+  
+  text[font-size="14"] {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .neural-network-container {
+    padding: 10px;
+  }
+  
+  .network-svg {
+    height: 250px;
+  }
+} 
