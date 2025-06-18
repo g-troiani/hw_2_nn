@@ -38,7 +38,7 @@ const GradientDescentVisualizer = ({ inputData }) => {
     const normalizedInputs = [
       (inputs.temperatureChange + 2) / 6,  // -2 to 4 → 0 to 1
       (inputs.precipitationChange + 30) / 60,  // -30 to 30 → 0 to 1
-      (inputs.co2Level - 400) / 400  // 400 to 800 → 0 to 1
+      Math.max(0.1, (inputs.co2Level - 350) / 450)  // 350 to 800 → 0.1 to 1 (consistent with other components)
     ];
     
     // Hidden layer calculation
